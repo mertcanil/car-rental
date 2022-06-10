@@ -16,21 +16,27 @@ public class Rental {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+    @ManyToOne
     @JoinColumn(name = "pick_up_location_id")
     private Location pickUpLocation;
     @ManyToOne
     @JoinColumn(name = "return_location_id")
     private Location returnLocation;
+    private double price;
 
     public Rental() {
     }
 
-    public Rental(LocalDate startDate, LocalDate endDate, Customer customer, Location pickUpLocation, Location returnLocation) {
+    public Rental(LocalDate startDate, LocalDate endDate, Customer customer, Car car, Location pickUpLocation, Location returnLocation, double price) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.customer = customer;
+        this.car = car;
         this.pickUpLocation = pickUpLocation;
         this.returnLocation = returnLocation;
+        this.price = price;
     }
 
     public Long getId() {
@@ -65,6 +71,14 @@ public class Rental {
         this.customer = customer;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
     public Location getPickUpLocation() {
         return pickUpLocation;
     }
@@ -81,6 +95,14 @@ public class Rental {
         this.returnLocation = returnLocation;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Rental{" +
@@ -88,8 +110,10 @@ public class Rental {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", customer=" + customer +
+                ", car=" + car +
                 ", pickUpLocation=" + pickUpLocation +
                 ", returnLocation=" + returnLocation +
+                ", price=" + price +
                 '}';
     }
 }

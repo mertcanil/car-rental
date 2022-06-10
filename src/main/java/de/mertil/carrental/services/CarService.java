@@ -19,6 +19,10 @@ public class CarService {
         return carRepository.findAll();
     }
 
+    public List<Car> findIfNotRented() {
+        return carRepository.findByRented(false);
+    }
+
     public void save(Car car) {
         carRepository.save(car);
     }

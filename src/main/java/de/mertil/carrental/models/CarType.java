@@ -3,7 +3,7 @@ package de.mertil.carrental.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cartype")
+@Table(name = "car_type")
 public class CarType {
 
     @Id
